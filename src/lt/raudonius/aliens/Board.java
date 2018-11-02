@@ -38,10 +38,11 @@ public class Board extends JPanel implements ActionListener {
 	private int sukurtaPriesu = 0;
 	private int nusautaPriesu = -1;
 	private Random rand = new Random();
-	JButton nexLevelButton = new JButton("Restart level");
+	JButton nexLevelButton = new JButton("next level");
 	JButton HighScoreButton = new JButton("High Scores");
 	JButton quitButton = new JButton("Quit Game");
 	JButton startGameButton = new JButton("Start Game");
+	JButton restartLevelButton = new JButton("Restart level");
 	private int points = 0;
 	JTextField text = new JTextField("Name");
 	// private String name;
@@ -62,6 +63,7 @@ public class Board extends JPanel implements ActionListener {
 		setLayout(null);
 		startGameButton.setBounds(100, 50, 200, 30);
 		nexLevelButton.setBounds(100, 50, 200, 30);
+		restartLevelButton.setBounds(100, 50, 200, 30);
 		HighScoreButton.setBounds(100, 100, 200, 30);
 		quitButton.setBounds(100, 150, 200, 30);
 		text.setBounds(100, 150, 200, 30);
@@ -75,6 +77,7 @@ public class Board extends JPanel implements ActionListener {
 		add(text);
 		add(quitButton);
 		add(startGameButton);
+		
 		text.setVisible(false);
 		add(HighScoreButton);
 		startGameButton.addActionListener(new ActionListener() {
@@ -83,7 +86,9 @@ public class Board extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				add(nexLevelButton);
+				add(restartLevelButton);
 				startGameButton.setVisible(false);
+				restartLevelButton.setVisible(false);
 				HighScoreButton.setVisible(false);
 				nexLevelButton.setVisible(false);
 				quitButton.setVisible(false);
@@ -164,15 +169,17 @@ public class Board extends JPanel implements ActionListener {
 
 		} else {
 			if (level <= 5) {
-				if (spaceship.isVisible()) {
-					nexLevelButton.setText("Next Level");
-					nexLevelButton.setVisible(true);
+				if (!spaceship.isVisible()) {
+					
+					drawInsertName(g);
 					nextLevel();
+					
+					this.points = 0;
 
 				} else {
-					// HighScoreButton.setVisible(true);
+				
+					nexLevelButton.setVisible(true);
 					nextLevel();
-					this.points = 0;
 				}
 			} else {
 				saveRezult();
@@ -193,18 +200,33 @@ public class Board extends JPanel implements ActionListener {
 				nexLevelButton.setVisible(false);
 				quitButton.setVisible(false);
 				text.setVisible(false);
-				if (sukurtaPriesu == nusautaPriesu) {
+				restartLevelButton.setVisible(false);
+				
 					level++;
-				} else {
-					nexLevelButton.setText("Restart Level");
-				}
+			
 				spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y);
 				setLevel(level);
 				ingame = true;
 				timer.start();
 			}
 		});
-		// add(startGameButton);
+		restartLevelButton.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				HighScoreButton.setVisible(false);
+				nexLevelButton.setVisible(false);
+				quitButton.setVisible(false);
+				text.setVisible(false);
+				restartLevelButton.setVisible(false);
+				spaceship = new SpaceShip(ICRAFT_X, ICRAFT_Y);
+				setLevel(level);
+				ingame = true;
+				timer.start();
+			}
+		});
+		
 	}
 
 	private void drawObjects(Graphics g) {
@@ -246,6 +268,16 @@ public class Board extends JPanel implements ActionListener {
 		g.setColor(Color.white);
 		g.setFont(small);
 		g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2, B_HEIGHT / 2);
+	}
+	private void drawInsertName(Graphics g) {
+
+		String msg = "Insert Name";
+		Font small = new Font("Helvetica", Font.BOLD, 14);
+		FontMetrics fm = getFontMetrics(small);
+
+		g.setColor(Color.white);
+		g.setFont(small);
+		g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2, 125);
 	}
 
 	@Override
@@ -376,17 +408,20 @@ public class Board extends JPanel implements ActionListener {
 	}
 
 	private void saveRezult() {
-		nexLevelButton.setVisible(false);
+		restartLevelButton.setVisible(false);
+		//nexLevelButton.setVisible(false);
 		HighScoreButton.setVisible(false);
+		
 		text.setVisible(true);
 		baz.setPoints(this.points);
 		text.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				nexLevelButton.setVisible(true);
+				//nexLevelButton.setVisible(true);
 				HighScoreButton.setVisible(true);
 				quitButton.setVisible(true);
+				restartLevelButton.setVisible(true);
 				baz.setName(text.getText());
 				text.setVisible(false);
 				try {
