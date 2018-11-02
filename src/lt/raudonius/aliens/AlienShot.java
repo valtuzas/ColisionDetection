@@ -9,12 +9,7 @@ public class AlienShot extends Missile {
 		super(x, y);
 		 super.initMissile(png);
 	}
-	//@Override
-	/*  protected void initMissile() {
-	        
-	        loadImage("src/resources/shot.png");
-	        getImageDimensions();        
-	    }*/
+
 	@Override
 	 public void move() {
 	        
