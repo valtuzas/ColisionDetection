@@ -4,7 +4,7 @@ public class StrongAlien extends Alien {
 	protected int lives = 5;
 	private boolean ableToMove = true;
 	private int points = 5;
-	private String png = "src/resources/strongalien.png";
+	private String png = "src/resources/images/strongalien.png";
 
 	public StrongAlien(int x, int y) {
 		super(x, y);

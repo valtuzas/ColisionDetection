@@ -6,7 +6,7 @@ public class ZigZagAlien extends Alien {
 
 	private Random rand = new Random();
 	private int points = 3;
-	private String png = "src/resources/zigzagalian.png";
+	private String png = "src/resources/images/zigzagalian.png";
 
 	public ZigZagAlien(int x, int y) {
 		super(x, y);

@@ -3,7 +3,7 @@ package lt.raudonius.aliens;
 public class AlienShot extends Missile {
 	
 	private final int MISSILE_SPEED = -2;
-	private String png = "src/resources/shot.png";
+	private String png = "src/resources/images/shot.png";
 
 	public AlienShot(int x, int y) {
 		super(x, y);

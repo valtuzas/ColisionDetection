@@ -6,20 +6,25 @@
 	<artifactId>aliens</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Shooting aliens</name>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.xerial</groupId>
 			<artifactId>sqlite-jdbc</artifactId>
-			<version>3.25.2</version>
+			<version>3.23.1</version>
 		</dependency>
-	</dependencies>
 	
+	</dependencies>
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
 			<resource>
-				<directory>src</directory>
+				<directory>src/resources/images</directory>
+			 <includes>
+          <include>**/*.png</include>
+         
+        </includes>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
@@ -32,6 +37,21 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>lt.raudonius.aliens.CollisionEx</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>

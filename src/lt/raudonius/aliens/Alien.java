@@ -11,7 +11,7 @@ public class Alien extends Sprite {
 	private int points = 1;
 	private List<AlienShot> shot;
 	protected Random rnd = new Random();
-	private String png = "src/resources/alien.png";
+	private String png = "src/resources/images/alien.png";
 
 	public Alien(int x, int y) {
 		super(x, y);
