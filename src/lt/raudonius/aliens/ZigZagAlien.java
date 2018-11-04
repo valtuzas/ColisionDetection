@@ -33,7 +33,7 @@ public class ZigZagAlien extends Alien {
 		if (y > 260) {
 			y = 260;
 		}
-		int sk = rnd.nextInt(2000);
+		int sk = rnd.nextInt(200);
 		if (sk == 1) {
 			fire();
 		}

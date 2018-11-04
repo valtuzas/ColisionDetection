@@ -129,15 +129,15 @@ public class Board extends JPanel implements ActionListener {
 
 	private void setLevel(int level) {
 		if (level == 1) {
-			initAliens(3, 2, 2);
+			initAliens(5, 2, 0);
 		} else if (level == 2) {
-			initAliens(1, 1, 0);
+			initAliens(5, 5, 1);
 		} else if (level == 3) {
-			initAliens(1, 1, 1);
+			initAliens(10, 8, 3);
 		} else if (level == 4) {
-			initAliens(2, 1, 1);
+			initAliens(15, 15, 5);
 		} else if (level == 5) {
-			initAliens(2, 2, 1);
+			initAliens(25, 20, 10);
 		}
 
 	}

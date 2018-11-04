@@ -30,7 +30,7 @@ public class Alien extends Sprite {
 		if (x < 0) {
 			x = INITIAL_X;
 		}
-		int sk = rnd.nextInt(1500);
+		int sk = rnd.nextInt(150);
 		if (sk == 1) {
 			fire();
 		}

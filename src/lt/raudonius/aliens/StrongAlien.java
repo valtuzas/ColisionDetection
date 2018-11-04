@@ -21,7 +21,7 @@ public class StrongAlien extends Alien {
 		if (CanMove()) {
 			x -= 1;
 		}
-		int sk = rnd.nextInt(1000);
+		int sk = rnd.nextInt(100);
 		if (sk == 1) {
 			fire();
 		}
